@@ -1,11 +1,16 @@
-import { put, takeLatest, fork } from 'redux-saga/effects';
+import { put, takeLatest, fork, call } from 'redux-saga/effects';
 
-// import { registerUserService, loginUserService } from 'services/authenticationService';
+import { createApiCall, loginRoute, MethodType } from 'services/Api';
 import { LoginData, ActionType } from '../../model/model';
 
 // login
-function* loginSaga(payload: LoginData) {
+function* loginSaga({ payload } : { payload: LoginData}) {
   try {
+
+    const response = yield call(
+      createApiCall, { method: MethodType.POST, url: loginRoute, data: payload }
+    );
+    const { body, status } = response;
     yield put({ type: ActionType.LOGIN_USER_SUCCESS, payload: 'success' });
   } catch (error) {
     yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })
