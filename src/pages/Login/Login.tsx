@@ -21,7 +21,9 @@ import createStyles from '@material-ui/core/styles/createStyles';
 import { RootState } from "../../redux/rootReducer";
 import { Todo } from "../../model/model";
 import * as LoginActions from "../../redux/authentication/authenticationActions";
-
+// elements
+import FieldEmail from 'elements/FieldEmail/FieldEmail';
+import FieldPassWord from 'elements/FieldPassword/FieldPassword';
 
 const styles = (theme: Theme) => createStyles({
   main: {
@@ -59,7 +61,7 @@ const styles = (theme: Theme) => createStyles({
 interface Props extends RouteComponentProps<any> {
   classes: any;
   todoList: Todo[];
-	actions: typeof LoginActions;
+  actions: typeof LoginActions;
 }
 
 function Login(props: Props) {
@@ -88,23 +90,8 @@ function Login(props: Props) {
           Sign in
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input
-              name="password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-          </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+          <FieldEmail value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(String(e.target.value))} />
+          <FieldPassWord value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(String(e.target.value))} />
           <Button
             type="submit"
             fullWidth
@@ -125,9 +112,9 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 function mapDispatchToProps(dispatch: any) {
-	return {
-		actions: bindActionCreators(LoginActions as any, dispatch),
-	};
+  return {
+    actions: bindActionCreators(LoginActions as any, dispatch),
+  };
 }
 
 export default connect(

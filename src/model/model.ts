@@ -21,6 +21,6 @@ export interface Action<T> {
 }
 
 export interface LoginData {
-    email: string;
-    password: string;
+    email: string | null;
+    password: string | null;
 }
