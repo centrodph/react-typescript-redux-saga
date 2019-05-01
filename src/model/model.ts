@@ -5,14 +5,20 @@ export interface Todo {
     completed: boolean;
 }
 
+export interface Listing {
+    id: number;
+    text: string;
+}
+
 export enum ActionType {
-    ADD_TODO = 'action/ADD_TODO',
-    DELETE_TODO = 'action/DELETE_TODO',
-    COMPLETE_TODO = 'action/COMPLETE_TODO',
-    UNCOMPLETE_TODO = 'action/UNCOMPLETE_TODO',
+    // login
     LOGIN_USER = 'action/LOGIN_USER',
     LOGIN_USER_SUCCESS = 'action/LOGIN_USER_SUCCESS',
     LOGIN_USER_ERROR = 'action/LOGIN_USER_ERROR',
+    // listing
+    LISTING_REQUEST = 'action/LISTING_REQUEST',
+    LISTING_REQUEST_SUCCESS = 'action/LISTING_REQUEST_SUCCESS',
+    LISTING_REQUEST_ERROR = 'action/LISTING_REQUEST_ERROR',    
 }
 
 export interface Action<T> {

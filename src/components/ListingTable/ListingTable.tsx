@@ -3,24 +3,19 @@ import { Checkbox, IconButton, Paper, Table, TableBody, TableCell, TableHead, Ta
 import DeleteIcon from "@material-ui/icons/Delete";
 import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
-import * as TodoActions from "../redux/todo/todoActions";
-import { Todo } from "../model/model";
+// redux
+import { Listing } from "model/model";
 
 interface Props {
-	todoList: Todo[];
-	actions: typeof TodoActions;
+	list: Listing[];
 }
 
-function TodoTable(props: Props) {
-	const { todoList, actions } = props;
+function ListingTable(props: Props) {
+	const { list } = props;
 	const classes = useStyles();
 
-	const onRowClick = (todo: Todo) => {
-		if (todo.completed) {
-			props.actions.uncompleteTodo(todo.id);
-		} else {
-			props.actions.completeTodo(todo.id);
-		}
+	const onRowClick = (listing: Listing) => {
+		console.log(listing)
 	};
 
 	return (
@@ -34,7 +29,7 @@ function TodoTable(props: Props) {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{todoList.map(n => {
+					{list.map(n => {
 						return (
 							<TableRow
 								key={n.id}
@@ -42,17 +37,11 @@ function TodoTable(props: Props) {
 								onClick={event => onRowClick(n)}
 							>
 								<TableCell padding="none">
-									<Checkbox checked={n.completed} />
+									a
 								</TableCell>
-								<TableCell padding="none">{n.text}</TableCell>
+								<TableCell padding="none"> test</TableCell>
 								<TableCell padding="none">
-									<IconButton
-										aria-label="Delete"
-										color="default"
-										onClick={() => actions.deleteTodo(n.id)}
-									>
-										<DeleteIcon />
-									</IconButton>
+									a
 								</TableCell>
 							</TableRow>
 						);
@@ -74,4 +63,4 @@ const useStyles = makeStyles({
 	},
 });
 
-export default TodoTable;
+export default ListingTable;

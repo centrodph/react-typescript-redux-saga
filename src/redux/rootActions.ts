@@ -1,4 +1,4 @@
-import * as TodoActions from "./todo/todoActions";
-import * as AuthenticationActions from './authentication/authenticationActions'
+import * as ListingActions from "redux/listing/listingActions";
+import * as AuthenticationActions from 'redux/authentication/authenticationActions'
 
-export const ActionCreators = Object.assign({}, {...TodoActions, ...AuthenticationActions });
+export const ActionCreators = Object.assign({}, {...ListingActions, ...AuthenticationActions });

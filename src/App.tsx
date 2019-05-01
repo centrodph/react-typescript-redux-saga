@@ -11,9 +11,8 @@ import { history } from "./redux/configureStore";
 import { RootState } from "./redux/rootReducer";
 import withRoot from "./withRoot";
 // pages
-import HomePage from "./pages/HomePage";
-import TodoPage from "./pages/TodoPage";
-import Login from "./pages/Login/Login";
+import Login from "pages/Login/Login";
+import ListingPage from 'pages/Listing/ListingPage';
 
 function Routes() {
 	const classes = useStyles();
@@ -21,13 +20,12 @@ function Routes() {
 	return (
 		<div className={classes.content}>
 			<Route exact={true} path="/" component={Login} />
-			<Route exact={true} path="/home" component={HomePage} />
-			<Route exact={true} path="/todo" component={TodoPage} />
+			<Route exact={true} path="/listing" component={ListingPage} />
 		</div>
 	);
 }
 
-interface Props extends RouteComponentProps<void>, WithWidth {}
+interface Props extends RouteComponentProps<void>, WithWidth { }
 
 function App(props?: Props) {
 	const classes = useStyles();
@@ -93,7 +91,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 function mapStateToProps(state: RootState) {
 	return {
-		todoList: state.todoList,
 	};
 }
 

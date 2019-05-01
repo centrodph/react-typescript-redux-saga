@@ -6,7 +6,7 @@ interface Props {
 	color: "red" | "blue" | string;
 }
 
-function HomeBox(props: Props) {
+function Box(props: Props) {
 	const { size, ...other } = props;
 
 	const classes = useStyles(props);
@@ -22,6 +22,7 @@ function HomeBox(props: Props) {
 
 const styledBy = (property: string, props: any, mapping: any): string =>
 	mapping[props[property]];
+	
 const useStyles = makeStyles((theme: Theme) => ({
 	box: (props: Props) => ({
 		display: "flex",
@@ -40,4 +41,4 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 }));
 
-export default HomeBox;
+export default Box;
