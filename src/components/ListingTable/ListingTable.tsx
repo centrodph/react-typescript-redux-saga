@@ -22,14 +22,14 @@ function ListingTable(props: Props) {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell >postId</TableCell>
-                            <TableCell >title</TableCell>
-                            <TableCell >contentSnippet</TableCell>
-                            <TableCell >link</TableCell>
-                            <TableCell >viewed</TableCell>
-                            <TableCell >emailed</TableCell>
-                            <TableCell >postedTimestamp</TableCell>
-                            <TableCell >createdTimestamp</TableCell>
+                            <TableCell >#</TableCell>
+                            <TableCell >Title</TableCell>
+                            <TableCell >Description</TableCell>
+                            <TableCell >Link</TableCell>
+                            <TableCell >Viewed</TableCell>
+                            <TableCell >Emailed</TableCell>
+                            <TableCell >Posted</TableCell>
+                            <TableCell >Created</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -47,11 +47,11 @@ function ListingTable(props: Props) {
                                     <TableCell padding="none">
                                         {listing.contentSnippet}
                                     </TableCell>
-                                    <TableCell >{listing.link}</TableCell>
+                                    <TableCell >{listing.link ? <a href={listing.link} target="_blank">Link</a> : ''}</TableCell>
                                     <TableCell >{listing.viewed}</TableCell>
                                     <TableCell >{listing.emailed}</TableCell>
-                                    <TableCell >{listing.postedTimestamp}</TableCell>
-                                    <TableCell >{listing.createdTimestamp}</TableCell>
+                                    <TableCell >{new Date(listing.postedTimestamp).toLocaleDateString("en-US")}</TableCell>
+                                    <TableCell >{new Date(listing.createdTimestamp).toLocaleDateString("en-US")}</TableCell>
                                 </TableRow>
                             );
                         })}

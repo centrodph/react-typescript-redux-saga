@@ -11,6 +11,7 @@ import { Listing } from "model/model";
 import * as listingActions from "redux/listing/listingActions";
 import { RootState } from "redux/rootReducer";
 // components
+import PrivateWrapper from 'components/PrivateWrapper/PrivateWrapper';
 import ListingTable from "components/ListingTable/ListingTable";
 
 const styles = (theme: Theme) => createStyles({
@@ -54,28 +55,28 @@ class ListingPage extends React.Component<Props> {
         const { listings, classes } = this.props;
 
         return (
-            <Grid container className={classes.root}>
-                <Grid item xs={6}>
-                    <Typography variant="h4" gutterBottom>
-                        Listing
-                    </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                    <div className={classes.buttonContainer}>
-                        <Button
-                            className={classes.button}
-                            variant="contained"
-                            color="secondary"
-                            onClick={this.nextPage}
-                        >
-                            Next Page
+            <PrivateWrapper>
+                <Grid container className={classes.root}>
+                    <Grid item xs={6}>
+
+                    </Grid>
+                    <Grid item xs={6}>
+                        <div className={classes.buttonContainer}>
+                            <Button
+                                className={classes.button}
+                                variant="contained"
+                                color="secondary"
+                                onClick={this.nextPage}
+                            >
+                                Next Page
                         </Button>
-                    </div>
+                        </div>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <ListingTable list={listings} />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                    <ListingTable list={listings} />
-                </Grid>
-            </Grid>
+            </PrivateWrapper>
         );
     }
 }

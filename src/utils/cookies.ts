@@ -1,3 +1,8 @@
+export function removeCookie(cname: string): void {	
+	let expires = "expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+	document.cookie = cname + "=;" + expires + ";path=/";
+}
+
 export function setCookie(cname: string, cvalue: string, hours: number = 1): void {
 	let d = new Date();
 	d.setTime(d.getTime() + hours * 60 * 60 * 1000); // (exdays * 24 * 60 * 60 * 1000));

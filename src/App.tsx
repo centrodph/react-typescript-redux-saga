@@ -10,6 +10,8 @@ import { Route, RouteComponentProps, Router } from "react-router-dom";
 import { history } from "./redux/configureStore";
 import { RootState } from "./redux/rootReducer";
 import withRoot from "./withRoot";
+// hoc
+import PrivateRoute from 'hoc/privateRoute';
 // pages
 import Login from "pages/Login/Login";
 import ListingPage from 'pages/Listing/ListingPage';
@@ -20,7 +22,8 @@ function Routes() {
 	return (
 		<div className={classes.content}>
 			<Route exact={true} path="/" component={Login} />
-			<Route exact={true} path="/listing" component={ListingPage} />
+			<PrivateRoute path='/listing' component={ListingPage} />
+			{/* <Route exact={true} path="/listing" component={ListingPage} /> */}
 		</div>
 	);
 }
