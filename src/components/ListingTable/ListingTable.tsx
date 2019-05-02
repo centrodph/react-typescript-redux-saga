@@ -1,8 +1,6 @@
-// prettier-ignore
-import { Checkbox, IconButton, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
-import TablePagination from '@material-ui/core/TablePagination';
-import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
 // redux
 import { Listing } from "model/model";
 
@@ -24,14 +22,14 @@ function ListingTable(props: Props) {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell padding="normal">postId</TableCell>
-                            <TableCell padding="normal">title</TableCell>
-                            <TableCell padding="normal">contentSnippet</TableCell>
-                            <TableCell padding="normal">link</TableCell>
-                            <TableCell padding="normal">viewed</TableCell>
-                            <TableCell padding="normal">emailed</TableCell>
-                            <TableCell padding="normal">postedTimestamp</TableCell>
-                            <TableCell padding="normal">createdTimestamp</TableCell>
+                            <TableCell >postId</TableCell>
+                            <TableCell >title</TableCell>
+                            <TableCell >contentSnippet</TableCell>
+                            <TableCell >link</TableCell>
+                            <TableCell >viewed</TableCell>
+                            <TableCell >emailed</TableCell>
+                            <TableCell >postedTimestamp</TableCell>
+                            <TableCell >createdTimestamp</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -49,11 +47,11 @@ function ListingTable(props: Props) {
                                     <TableCell padding="none">
                                         {listing.contentSnippet}
                                     </TableCell>
-                                    <TableCell padding="normal">{listing.link}</TableCell>
-                                    <TableCell padding="normal">{listing.viewed}</TableCell>
-                                    <TableCell padding="normal">{listing.emailed}</TableCell>
-                                    <TableCell padding="normal">{listing.postedTimestamp}</TableCell>
-                                    <TableCell padding="normal">{listing.createdTimestamp}</TableCell>
+                                    <TableCell >{listing.link}</TableCell>
+                                    <TableCell >{listing.viewed}</TableCell>
+                                    <TableCell >{listing.emailed}</TableCell>
+                                    <TableCell >{listing.postedTimestamp}</TableCell>
+                                    <TableCell >{listing.createdTimestamp}</TableCell>
                                 </TableRow>
                             );
                         })}

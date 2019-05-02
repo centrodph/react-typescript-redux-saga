@@ -13,6 +13,27 @@ import { RootState } from "redux/rootReducer";
 // components
 import ListingTable from "components/ListingTable/ListingTable";
 
+const styles = (theme: Theme) => createStyles({
+    root: {
+        padding: 20,
+        [theme.breakpoints.down("md")]: {
+            paddingTop: 50,
+            paddingLeft: 15,
+            paddingRight: 15,
+        },
+    },
+
+    buttonContainer: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "flex-end",
+    },
+
+    button: {
+        marginBottom: 15,
+    },
+});
+
 interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
     listings: Listing[];
     actions: typeof listingActions;
@@ -59,26 +80,7 @@ class ListingPage extends React.Component<Props> {
     }
 }
 
-const styles = (theme: Theme) => createStyles({
-    root: {
-        padding: 20,
-        [theme.breakpoints.down("md")]: {
-            paddingTop: 50,
-            paddingLeft: 15,
-            paddingRight: 15,
-        },
-    },
 
-    buttonContainer: {
-        width: "100%",
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-
-    button: {
-        marginBottom: 15,
-    },
-});
 
 function mapStateToProps(state: RootState) {
     return {

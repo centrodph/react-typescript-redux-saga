@@ -1,9 +1,8 @@
 import { put, takeLatest, fork, call } from 'redux-saga/effects';
-import { push } from 'react-router-redux';
 
 import { createApiCall, loginRoute, MethodType } from 'services/Api';
 import { setCookie } from 'utils/cookies';
-import { LoginData, ActionType } from '../../model/model';
+import { LoginData, ActionType } from 'model/model';
 
 // login
 function* loginSaga({ payload }: { payload: LoginData }) {

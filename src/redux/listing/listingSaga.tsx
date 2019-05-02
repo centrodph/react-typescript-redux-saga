@@ -1,7 +1,7 @@
 import { put, takeLatest, fork, call } from 'redux-saga/effects';
 
 import { createApiCall, listingRoute, MethodType } from 'services/Api';
-import { LoginData, ActionType } from 'model/model';
+import { ActionType } from 'model/model';
 
 // login
 function* getListingSaga({ payload }: { payload?: string }) {
