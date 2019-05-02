@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
+
 // material ui
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -57,9 +58,11 @@ interface Props extends RouteComponentProps<any> {
   classes: any;
   todoList: Todo[];
   actions: typeof LoginActions;
+  token: string | null;
 }
 
 function Login(props: Props) {
+  console.log(props);
   const { classes } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -71,9 +74,11 @@ function Login(props: Props) {
       password
     });
   };
-  // if (isSuccess) {
-  //   setCookie("token", this.props.response.login.response.token, 1);
-  // }
+  useEffect(() => {
+    if(props.token) {
+      props.history.push('/listing');
+    }
+  });
   return (
     <main className={classes.main}>
       <CssBaseline />
@@ -103,7 +108,7 @@ function Login(props: Props) {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  response: state
+  token: state.loginForm.token,
 });
 
 function mapDispatchToProps(dispatch: any) {

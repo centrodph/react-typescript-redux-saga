@@ -5,6 +5,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import App from "../App";
 import configureStore from "./configureStore";
 
+
 const { persistor, store } = configureStore();
 
 function ReduxRoot() {
@@ -16,8 +17,11 @@ function ReduxRoot() {
 			>
 				<App />
 			</PersistGate>
+
 		</Provider>
 	);
 }
+
+export { store };
 
 export default ReduxRoot;

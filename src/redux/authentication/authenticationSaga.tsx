@@ -1,4 +1,5 @@
 import { put, takeLatest, fork, call } from 'redux-saga/effects';
+import { push } from 'react-router-redux';
 
 import { createApiCall, loginRoute, MethodType } from 'services/Api';
 import { setCookie } from 'utils/cookies';
@@ -14,6 +15,7 @@ function* loginSaga({ payload }: { payload: LoginData }) {
     if (response.status === 'ok') {
       setCookie('token', response.data.authToken.token);
       yield put({ type: ActionType.LOGIN_USER_SUCCESS, payload: response.data.authToken.token });
+      yield put(push('/listing'));
     } else {
       yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })
     }

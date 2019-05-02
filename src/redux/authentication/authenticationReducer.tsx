@@ -42,6 +42,7 @@ export const authenticationReducer = createReducer<AuthenticationReducerType>(de
     return {
       ...state,
       loading: false,
+      error: null,
       token: action.payload,
     };
   },
