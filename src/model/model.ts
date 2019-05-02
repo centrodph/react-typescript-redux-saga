@@ -6,8 +6,15 @@ export interface Todo {
 }
 
 export interface Listing {
-    id: number;
-    text: string;
+    city: string;
+    postId: string;
+    title: string;
+    contentSnippet: string;
+    link: string;
+    viewed: boolean;
+    emailed: boolean;
+    postedTimestamp: number;
+    createdTimestamp: number;
 }
 
 export enum ActionType {

@@ -10,7 +10,7 @@ export enum MethodType {
 }
 
 export const loginRoute = `/api/login`
-export const listingRoute = `api/sale_listings`
+export const listingRoute = `/api/sale_listings`
 
 
 export const createApiCall = async ({ method = 'GET', url = '', data = {}, auth = false }) => {

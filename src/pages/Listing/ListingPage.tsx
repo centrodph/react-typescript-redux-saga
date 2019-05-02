@@ -21,7 +21,13 @@ interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
 class ListingPage extends React.Component<Props> {
 
     componentDidMount() {
-        this.props.actions.getListingAction('OBERHEIM');
+        this.props.actions.getListingAction();
+    }
+    nextPage = () => {
+        const { listings, actions } = this.props;
+        if (!listings || listings.length < 1) return;
+        const latest = listings[listings.length - 1]
+        actions.getListingAction(String(latest.postedTimestamp));
     }
     render() {
         const { listings, classes } = this.props;
@@ -39,9 +45,9 @@ class ListingPage extends React.Component<Props> {
                             className={classes.button}
                             variant="contained"
                             color="secondary"
-                            onClick={console.log}
+                            onClick={this.nextPage}
                         >
-                            Add Todo
+                            Next Page
                         </Button>
                     </div>
                 </Grid>

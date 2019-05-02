@@ -1,28 +1,27 @@
 import { put, takeLatest, fork, call } from 'redux-saga/effects';
 
-import { createApiCall, loginRoute, MethodType } from 'services/Api';
-import { setCookie } from 'utils/cookies';
-import { LoginData, ActionType } from '../../model/model';
+import { createApiCall, listingRoute, MethodType } from 'services/Api';
+import { LoginData, ActionType } from 'model/model';
 
 // login
-function* loginSaga({ payload } : { payload: LoginData}) {
+function* getListingSaga({ payload }: { payload?: string }) {
   try {
 
     const response = yield call(
-      createApiCall, { method: MethodType.POST, url: loginRoute, data: payload }
+      createApiCall, { method: MethodType.GET, url: `${listingRoute}${payload ? `?timestamp=${payload}` : ''}`, data: undefined, auth: true }
     );
-    if(response.status === 'ok'){
-      setCookie('token', response.data.authToken.token);
-      yield put({ type: ActionType.LOGIN_USER_SUCCESS });
+    if (response.status === 'ok') {
+      yield put({ type: ActionType.LISTING_REQUEST_SUCCESS, payload: response.data.saleListings });
     } else {
-      yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })  
+      yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })
     }
+
   } catch (error) {
-    yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })
+    yield put({ type: ActionType.LISTING_REQUEST_ERROR, payload: error })
   }
 }
 function* onLoginSubmitWatcher() {
-  yield takeLatest(ActionType.LOGIN_USER as any, loginSaga);;
+  yield takeLatest(ActionType.LISTING_REQUEST as any, getListingSaga);;
 }
 
 export default [

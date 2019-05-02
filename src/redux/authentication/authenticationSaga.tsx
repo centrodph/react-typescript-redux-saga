@@ -15,7 +15,6 @@ function* loginSaga({ payload }: { payload: LoginData }) {
     if (response.status === 'ok') {
       setCookie('token', response.data.authToken.token);
       yield put({ type: ActionType.LOGIN_USER_SUCCESS, payload: response.data.authToken.token });
-      yield put(push('/listing'));
     } else {
       yield put({ type: ActionType.LOGIN_USER_ERROR, payload: 'error' })
     }

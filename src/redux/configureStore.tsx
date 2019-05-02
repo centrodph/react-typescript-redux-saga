@@ -15,7 +15,7 @@ const persistConfig: PersistConfig = {
 	key: "root",
 	version: 1,
 	storage: localforage,
-	blacklist: [],
+	blacklist: ['loginForm', 'listing'],
 };
 
 const logger = (createLogger as any)();
