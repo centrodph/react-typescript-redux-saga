@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// redux 
 import { removeCookie } from 'utils/cookies';
 
 const useClasses = makeStyles(() => ({
@@ -37,7 +36,7 @@ export default function ButtonAppBar() {
                     </IconButton>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         Listings
-          </Typography>
+                    </Typography>
                     <Button color="inherit" onClick={() => {
                         removeCookie('token');
                         window.location.href = '/';
