@@ -5,9 +5,8 @@ import { WithWidth } from "@material-ui/core/withWidth";
 import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Route, RouteComponentProps, Router } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 // config
-import { history } from "./redux/configureStore";
 import { RootState } from "./redux/rootReducer";
 import withRoot from "./withRoot";
 // hoc
@@ -28,7 +27,7 @@ function Routes() {
 	);
 }
 
-interface Props extends RouteComponentProps<void>, WithWidth { }
+interface Props extends WithWidth { }
 
 function App(props?: Props) {
 	const classes = useStyles();
@@ -37,7 +36,7 @@ function App(props?: Props) {
 	}
 
 	return (
-		<Router history={history}>
+		<Router>
 			<div className={classes.root}>
 				<div className={classes.appFrame}>
 					<Routes />

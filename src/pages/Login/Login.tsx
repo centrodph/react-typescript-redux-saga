@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
 
 // material ui
 import Avatar from "@material-ui/core/Avatar";
@@ -20,6 +19,7 @@ import * as LoginActions from "../../redux/authentication/authenticationActions"
 // elements
 import FieldUsername from 'elements/FieldUsername/FieldUsername';
 import FieldPassWord from 'elements/FieldPassword/FieldPassword';
+import { useNavigate } from "react-router-dom";
 
 const styles = (theme: Theme) => createStyles({
   main: {
@@ -54,7 +54,7 @@ const styles = (theme: Theme) => createStyles({
 });
 
 
-interface Props extends RouteComponentProps<any> {
+interface Props {
   classes: any;
   todoList: Todo[];
   actions: typeof LoginActions;
@@ -62,10 +62,11 @@ interface Props extends RouteComponentProps<any> {
 }
 
 function Login(props: Props) {
-  console.log(props);
   const { classes } = props;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -76,7 +77,7 @@ function Login(props: Props) {
   };
   useEffect(() => {
     if(props.token) {
-      props.history.push('/listing');
+      navigate('/listing');
     }
   });
   return (
