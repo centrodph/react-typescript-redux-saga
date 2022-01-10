@@ -11,7 +11,7 @@ import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const persistConfig: PersistConfig = {
+const persistConfig: PersistConfig<any, any, any, any> = {
 	key: "root",
 	version: 1,
 	storage: localforage,
