@@ -4,10 +4,10 @@ import { createApiCall, listingRoute, MethodType } from 'services/Api';
 import { ActionType } from 'model/model';
 
 // login
-function* getListingSaga({ payload }: { payload?: string }) {
+function* getListingSaga({ payload }: { payload?: string }): Generator<any> {
   try {
 
-    const response = yield call(
+    const response: any = yield call(
       createApiCall, { method: MethodType.GET, url: `${listingRoute}${payload ? `?timestamp=${payload}` : ''}`, data: undefined, auth: true }
     );
     if (response.status === 'ok') {

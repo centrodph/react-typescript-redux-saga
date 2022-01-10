@@ -5,10 +5,10 @@ import { setCookie } from 'utils/cookies';
 import { LoginData, ActionType } from 'model/model';
 
 // login
-function* loginSaga({ payload }: { payload: LoginData }) {
+function* loginSaga({ payload }: { payload: LoginData }): Generator<any> {
   try {
 
-    const response = yield call(
+    const response: any = yield call(
       createApiCall, { method: MethodType.POST, url: loginRoute, data: payload }
     );
     if (response.status === 'ok') {
